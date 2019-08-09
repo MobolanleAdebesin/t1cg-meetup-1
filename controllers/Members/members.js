@@ -14,7 +14,13 @@ module.exports = {
   },
   addMember: function(req, res) {
     Members.create(req.body).then(doc => {
-      console.log(doc);
+      res
+        .status(201)
+        .json({
+          msg: 'Succesfully added!',
+          doc
+        })
+        .end();
     });
   }
 };
