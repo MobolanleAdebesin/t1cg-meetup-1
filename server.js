@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const helmet = require('helmet');
+const mongoose = require('mongoose');
 
 const PORT = process.env.PORT || 3002;
 const app = express();
@@ -14,21 +15,18 @@ app.use(
   })
 );
 
-//if the host environment is in production, use files from client/build
-if (app.get('env') === 'production') {
-} else {
-  //otherwise, use middleware morgan in development
-}
-
 switch (app.get('env')) {
+  //if the host environment is in production, use files from client/build
   case 'production':
     app.use(express.static('client/build'));
     break;
 
+  //if development, use middleware morgan in development
   case 'development':
     app.use(logger('dev'));
     break;
 
+  //if neither, follow production
   default:
     app.use(express.static('client/build'));
     break;
@@ -40,7 +38,20 @@ app.use(bodyParser.json());
 //using the routes
 app.use(require('./routes'));
 
+//database connection
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://localhost/t1cgmeetup',
+  {
+    useCreateIndex: true,
+    useNewUrlParser: true
+  },
+  err => {
+    if (err) throw err;
+    console.log('Database is online & connected');
+  }
+);
+
 //make the server listen for requests
 app.listen(PORT, function() {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+  console.log(`Express API Server is up & running`);
 });
