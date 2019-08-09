@@ -10,8 +10,7 @@ import members from '../../utils/members';
 
 export default class Members extends Component {
   state = {
-    members: [],
-    currentMember: []
+    members: []
   };
 
   //this will run fetchMembers once the app is done loading
@@ -26,23 +25,16 @@ export default class Members extends Component {
     });
   };
 
-  //helper function to retrieve one doc with id from params - ex: /api/members/5d4dab2a765b7b46bb4924bc
-  // fetchMemberId = id => {
-  //   members.getOneMember({ _id: id }).then(res => {
-  //     this.setState({ currentMember: res.data });
-  //   });
-  // };
-
   render() {
     return (
       <Wrapper>
         <Container fluid={true}>
           <Row>
             {this.state.members.map(member => (
-              <Col size={'md-4'}>
+              <Col size={'md-4'} key={member._id}>
                 <MemberCard
-                  id={member.id}
-                  key={member.id}
+                  id={member._id}
+                  key={member._id}
                   Name={member.Name}
                   imgURL={member.imgURL}
                   Occupation={member.Occupation}
