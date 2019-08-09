@@ -1,3 +1,4 @@
 module.exports = {
-  MeetUp: require('./MeetUp')
+  MeetUp: require('./MeetUp'),
+  Members: require('./Members')
 };
