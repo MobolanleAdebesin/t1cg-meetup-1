@@ -1,71 +1,68 @@
 import React from 'react';
 // import './style.css';
 
-export default function MemberCard(props) {
+export default function MemberCard({
+  id, //not being using, but probably will need in the future
+  Name,
+  imgURL,
+  Occupation,
+  Bio,
+  socialMedia,
+  Twitter,
+  Facebook,
+  LinkedIn,
+  Github
+}) {
   return (
     <div className="card memberCard">
       <div className="img-container">
         <img
-          alt={props.Name}
+          alt={Name}
           src={
-            props.imgURL.length < 2
-              ? 'https://via.placeholder.com/350x150'
-              : props.imgURL
+            imgURL.length < 2 ? 'https://via.placeholder.com/350x150' : imgURL
           }
         />
       </div>
       <div className="memberCardContent">
         <ul>
           <li>
-            <strong>Name:</strong> {props.Name}
+            <strong>Name:</strong> {Name}
           </li>
           <li>
             <strong>Occupation:</strong>{' '}
-            {props.Occupation.length < 1 ? 'Team Member' : props.Occupation}
+            {Occupation.length < 1 ? 'Team Member' : Occupation}
           </li>
           <li>
-            <strong>Bio:</strong> {props.Bio.length < 1 ? 'Hello!' : props.Bio}
+            <strong>Bio:</strong> {Bio.length < 1 ? 'Hello!' : Bio}
           </li>
-          {props.socialMedia ? (
+          {socialMedia ? (
             <>
               <li>
                 <strong>Twitter:</strong>{' '}
                 <a
-                  href={'https://www.twitter.com/' + props.Twitter}
+                  href={'https://www.twitter.com/' + Twitter}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {props.Twitter}
+                  {Twitter}
                 </a>
               </li>
               <li>
                 <strong>Facebook:</strong>{' '}
-                <a
-                  href={props.Facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {props.Facebook}
+                <a href={Facebook} target="_blank" rel="noopener noreferrer">
+                  {Facebook}
                 </a>
               </li>
               <li>
                 <strong>LinkedIn:</strong>{' '}
-                <a
-                  href={props.LinkedIn}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {props.LinkedIn}
+                <a href={LinkedIn} target="_blank" rel="noopener noreferrer">
+                  {LinkedIn}
                 </a>
               </li>
               <li>
                 <strong>Github:</strong>{' '}
-                <a
-                  href={props.Github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {props.Github}
+                <a href={Github} target="_blank" rel="noopener noreferrer">
+                  {Github}
                 </a>
               </li>
             </>
@@ -73,22 +70,14 @@ export default function MemberCard(props) {
             <>
               <li>
                 <strong>LinkedIn:</strong>{' '}
-                <a
-                  href={props.LinkedIn}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {props.LinkedIn}
+                <a href={LinkedIn} target="_blank" rel="noopener noreferrer">
+                  {LinkedIn}
                 </a>
               </li>
               <li>
                 <strong>Github:</strong>{' '}
-                <a
-                  href={props.Github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {props.Github}
+                <a href={Github} target="_blank" rel="noopener noreferrer">
+                  {Github}
                 </a>
               </li>
             </>
