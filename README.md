@@ -127,12 +127,15 @@ Combines bookmark’s branch into current local branch
 
 ---
 
-## App Routes:
+### Routes:
+
+##### API Server:
 
 - Server Default: `localhost:3002`
 - Return Format: JSON
   - `/api` - is the root of it all. MUST INCLUDE `/api/` BEFORE ALL PATHS BELOW. `ex:localhost:3002/api/meetup`
     - GET `/members` - `localhost:3002/api/members` - Grabs ALdata from MongoDB and returns JSON format.
+    - POST `/members` - Adds data via req.body, saves data to MongoDB.
     - GET `/members/:id` - Grabs `:id` from MongoDB and return JSON format.
 
 ---
