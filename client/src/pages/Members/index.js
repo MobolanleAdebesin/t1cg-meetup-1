@@ -5,12 +5,33 @@ import Wrapper from '../../components/Wrapper';
 import MemberCard from '../../components/MemberCard';
 import { Container, Row, Col } from '../../components/Grid';
 
-import members from '../../assets/data/members.json';
+//axios calls
+import members from '../../utils/members';
 
 export default class Members extends Component {
   state = {
-    members
+    members: [],
+    currentMember: []
   };
+
+  //this will run fetchMembers once the app is done loading
+  componentDidMount() {
+    this.fetchMembers();
+  }
+
+  //helper function to retrieve all data from /api/members
+  fetchMembers = () => {
+    members.getAllMembers().then(res => {
+      this.setState({ members: res.data });
+    });
+  };
+
+  //helper function to retrieve one doc with id from params - ex: /api/members/5d4dab2a765b7b46bb4924bc
+  // fetchMemberId = id => {
+  //   members.getOneMember({ _id: id }).then(res => {
+  //     this.setState({ currentMember: res.data });
+  //   });
+  // };
 
   render() {
     return (
