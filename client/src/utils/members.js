@@ -5,7 +5,7 @@ export default {
     return axios.get('/api/members');
   },
   getOneMember: function(id) {
-    return axios.get('/api/members' + id);
+    return axios.get('/api/members/' + id);
   },
   addMember: function() {
     return axios.post('/api/members').then(res => {

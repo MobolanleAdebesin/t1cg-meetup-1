@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const logger = require('morgan');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 
@@ -23,6 +22,7 @@ switch (app.get('env')) {
 
   //if development, use middleware morgan in development
   case 'development':
+    const logger = require('morgan');
     app.use(logger('dev'));
     break;
 
@@ -53,5 +53,5 @@ mongoose.connect(
 
 //make the server listen for requests
 app.listen(PORT, function() {
-  console.log(`Express API Server is up & running`);
+  console.log(`Express API Server is up & running: http://localhost:%s`, PORT);
 });
